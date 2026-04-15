@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>クイズサイト</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .quiz-box {
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-box">
+    <h2 id="question">問題がここに出ます</h2>
+    <div id="choices"></div>
+    <p id="result"></p>
+    <button onclick="nextQuestion()">次の問題</button>
+  </div>
+
+  <script>
+    const quiz = [
+      {
+        question: "大英帝国全盛期の女王は？",
+        choices: ["エリザベス1世", "エリザベス2世", "ヴィクトリア"],
+        answer: 2
+      },
+      {
+        question: "ウェールズを併合した王は？",
+        choices: ["ヘンリ8世", "ジョージ3世", "アルフレッド大王"],
+        answer: 1
+      },
+      {
+        question: "ニュージーランドの先住民族マオリと英国王室の間で締結された、ニュージーランド建国の基礎となる条約は？",
+        choices: ["英新和平条約", "ワイタンギ条約", "クライストチャーチ条約"],
+        answer: 1
+      }
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      const q = quiz[current];
+      document.getElementById("question").textContent = q.question;
+
+      const choicesDiv = document.getElementById("choices");
+      choicesDiv.innerHTML = "";
+
+      q.choices.forEach((choice, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = choice;
+        btn.onclick = () => checkAnswer(index);
+        choicesDiv.appendChild(btn);
+      });
+
+      document.getElementById("result").textContent = "";
+    }
+
+    function checkAnswer(index) {
+      if (index === quiz[current].answer) {
+        document.getElementById("result").textContent = "正解！🎉";
+      } else {
+        document.getElementById("result").textContent = "不正解😢";
+      }
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current >= quiz.length) {
+        document.getElementById("question").textContent = "終了！";
+        document.getElementById("choices").innerHTML = "";
+        document.getElementById("result").textContent = "";
+      } else {
+        loadQuestion();
+      }
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
