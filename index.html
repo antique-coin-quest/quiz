@@ -3,28 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>クイズサイト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       font-family: sans-serif;
       background: linear-gradient(135deg, #667eea, #764ba2);
       margin: 0;
-      padding: 20px;
-      color: #333;
+      padding: 15px;
     }
 
     .quiz-box {
-      max-width: 420px;
+      width: 100%;
+      max-width: 500px;
       margin: auto;
       background: white;
-      padding: 25px;
+      padding: 20px;
       border-radius: 15px;
+      box-sizing: border-box;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       text-align: center;
     }
 
     h2 {
-      font-size: 18px;
-      margin-bottom: 20px;
+      font-size: 20px;
+      line-height: 1.5;
     }
 
     .progress {
@@ -34,13 +37,12 @@
     }
 
     .choice-btn {
-      display: block;
       width: 100%;
+      padding: 16px;
       margin: 10px 0;
-      padding: 12px;
-      font-size: 15px;
+      font-size: 16px;
+      border-radius: 12px;
       border: none;
-      border-radius: 10px;
       background: #f1f1f1;
       cursor: pointer;
       transition: 0.2s;
@@ -48,6 +50,10 @@
 
     .choice-btn:hover {
       background: #ddd;
+    }
+
+    .choice-btn:active {
+      transform: scale(0.97);
     }
 
     .correct {
@@ -63,14 +69,15 @@
     #result {
       margin-top: 15px;
       font-weight: bold;
+      font-size: 16px;
     }
 
     #nextBtn {
       margin-top: 15px;
-      padding: 10px;
+      padding: 14px;
       width: 100%;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       background: #667eea;
       color: white;
       font-size: 16px;
@@ -82,6 +89,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="quiz-box">
@@ -110,12 +118,12 @@
         answer: 1
       },
       {
-        question: "万有引力の発見で有名で王立造幣局長官も務めた人物は？",
+        question: "万有引力の発見などで有名で、王立造幣局長官も務めた人物は？",
         choices: ["アイザック・ニュートン", "アインシュタイン", "ガリレオ"],
         answer: 0
       },
       {
-        question: "南アフリカで巨富を得てローデシアを建設した人物は？",
+        question: "南アフリカでダイヤモンド・金鉱で巨富を得て、ローデシアを建設した人物は？",
         choices: ["セシル・ローズ", "チャーチル", "リヴィングストン"],
         answer: 0
       }
@@ -127,7 +135,7 @@
       const q = quiz[current];
 
       document.getElementById("progress").textContent =
-        `${current + 1} / ${quiz.length}`;
+        (current + 1) + " / " + quiz.length;
 
       document.getElementById("question").textContent = q.question;
 
