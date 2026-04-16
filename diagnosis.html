@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>YES/NO診断</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .no {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2 id="question"></h2>
+
+    <button class="yes" onclick="answer(true)">YES</button>
+    <button class="no" onclick="answer(false)">NO</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const questions = [
+      "新しい土地を開拓したいと思う？",
+      "リーダーになるのが好き？",
+      "リスクを取ることに抵抗がない？",
+      "歴史や戦略に興味がある？"
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      document.getElementById("question").textContent = questions[current];
+    }
+
+    function answer(isYes) {
+      if (isYes) score++;
+
+      current++;
+
+      if (current >= questions.length) {
+        showResult();
+      } else {
+        loadQuestion();
+      }
+    }
+
+    function showResult() {
+      let resultText = "";
+
+      if (score >= 3) {
+        resultText = "あなたは『帝国タイプ』！🌍";
+      } else if (score >= 2) {
+        resultText = "あなたは『バランスタイプ』⚖️";
+      } else {
+        resultText = "あなたは『慎重タイプ』🛡️";
+      }
+
+      document.getElementById("question").textContent = "診断結果";
+      document.getElementById("result").textContent = resultText;
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
