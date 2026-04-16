@@ -62,10 +62,8 @@
 
   <script>
     const questions = [
-      "新しい土地を開拓したいと思う？",
-      "リーダーになるのが好き？",
-      "リスクを取ることに抵抗がない？",
-      "歴史や戦略に興味がある？"
+      "どちらかと言えばコレクション目的というよりは投資目的だ",
+      "どちらかと言えば日本のコインより海外のコインに興味がある",
     ];
 
     let current = 0;
@@ -90,12 +88,12 @@
     function showResult() {
       let resultText = "";
 
-      if (score >= 3) {
-        resultText = "あなたは『帝国タイプ』！🌍";
-      } else if (score >= 2) {
-        resultText = "あなたは『バランスタイプ』⚖️";
+      if (score >= 2) {
+        resultText = "スラブ入りのイギリス・ヴィクトリア、フランス・ナポレオンなどがおすすめです！🌍";
+      } else if (score = 1) {
+        resultText = "回答準備中です！";
       } else {
-        resultText = "あなたは『慎重タイプ』🛡️";
+        resultText = "裸のコインがおすすめです！";
       }
 
       document.getElementById("question").textContent = "診断結果";
