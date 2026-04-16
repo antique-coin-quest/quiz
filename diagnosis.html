@@ -83,7 +83,8 @@
   <script>
     const questions = [
       "どちらかと言えばコレクション目的というよりは投資目的だ",
-      "どちらかと言えば日本のコインより海外のコインに興味がある"
+      "どちらかと言えば日本のコインより海外のコインに興味がある",
+      "1枚のコインに10万円以上払ってもいいと思う"
     ];
 
     let current = 0;
@@ -107,13 +108,18 @@
     function showResult() {
       const q1 = answers[0];
       const q2 = answers[1];
+      const q3 = answers[2];
 
       let resultText = "";
 
-      if (q1 && q2) {
-        resultText = "スラブ入りのイギリス・ヴィクトリア、フランス・ナポレオンなどがおすすめです！🌍";
-      } else if (!q1 && !q2) {
-        resultText = "裸のコインがおすすめです！";
+      if (q1 && q2 && q3) {
+        resultText = "スラブ入りのイギリス・ヴィクトリア金貨、フランス・ナポレオン金貨などがおすすめです！🌍";
+      } else if (q1 && !q2 && q3) {
+        returnText = "回答準備中です！";
+      } else if (!q1 && q2 && !q3) {
+        resultText = "裸の外国のコインがおすすめです！";        
+      } else if (!q1 && !q2 && !q3) {
+        resultText = "裸の日本のコインがおすすめです！";
       } else {
         resultText = "回答準備中です！";
       }
