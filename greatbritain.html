@@ -173,10 +173,10 @@
     function nextQuestion() {
       current++;
       if (current >= quiz.length) {
-        document.getElementById("question").textContent = "終了！";
+        document.getElementById("question").textContent = "終了です！";
         document.getElementById("choices").innerHTML = "";
         document.getElementById("progress").textContent = "";
-        document.getElementById("result").textContent = "お疲れさま！";
+        document.getElementById("result").textContent = "お疲れさまでした！";
       } else {
         loadQuestion();
       }
